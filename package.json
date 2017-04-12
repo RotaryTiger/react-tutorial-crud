@@ -1,0 +1,22 @@
+{
+  "name": "react-tutorial-crud",
+  "version": "1.0.0",
+  "description": "CRUD for react tutorial tuesdays",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RotaryTiger/react-tutorial-crud.git"
+  },
+  "author": "Daniel MacPhee <dmacrva@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RotaryTiger/react-tutorial-crud/issues"
+  },
+  "homepage": "https://github.com/RotaryTiger/react-tutorial-crud#readme",
+  "dependencies": {
+    "pg": "^6.1.5"
+  }
+}
