@@ -74,6 +74,40 @@ router.get('/', (req, res) => {
 });
 
 /**
+ * Get a single dog by id
+ */
+router.get('/:dog_id', (req, res) => {
+	pgdb.connect(connection, (err, client, done) => {
+		if (err) {
+			done();
+			return res.status(500).send({
+				error: err,
+				message: 'Error connecting to database'
+			});
+		}
+
+		let query_string = "SELECT * FROM dogs WHERE id = ($1)";
+		let query_args = [req.params.dog_id];
+
+		client.query(query_string, query_args, (err, result) => {
+			done();
+
+			if (err) {
+				return res.status(500).send({
+					error: err,
+					message: 'Error getting dog'
+				});
+			}
+
+			return res.status(200).send({
+				data: result.rows[0],
+				message: 'Successfully got dog #' + req.params.dog_id
+			});
+		});
+	});
+});
+
+/**
  * Create a dog
  */
 router.post('/', (req, res) => {
@@ -112,40 +146,6 @@ router.post('/', (req, res) => {
 					data: dogs,
 					message: 'Successfully created dog'
 				});
-			});
-		});
-	});
-});
-
-/**
- * Get a single dog by id
- */
-router.get('/:dog_id', (req, res) => {
-	pgdb.connect(connection, (err, client, done) => {
-		if (err) {
-			done();
-			return res.status(500).send({
-				error: err,
-				message: 'Error connecting to database'
-			});
-		}
-
-		let query_string = "SELECT * FROM dogs WHERE id = ($1)";
-		let query_args = [req.params.dog_id];
-
-		client.query(query_string, query_args, (err, result) => {
-			done();
-
-			if (err) {
-				return res.status(500).send({
-					error: err,
-					message: 'Error getting dog'
-				});
-			}
-
-			return res.status(200).send({
-				data: result.rows[0],
-				message: 'Successfully got dog #' + req.params.dog_id
 			});
 		});
 	});
