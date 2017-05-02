@@ -7,21 +7,9 @@ Clone the repo, create a pet shop database and dogs table, run the server. Simpl
 
 ### postgres
 
-```
-psql
+Make sure you have a Postgres instance running on http://localhost:5432 that doesn't have a database named "petshop" and run:
 
-CREATE DATABASE petshop;
-
-\c petshop
-
-CREATE TABLE dogs(
-id SERIAL PRIMARY KEY,
-name VARCHAR(50) UNIQUE,
-breed VARCHAR(50),
-age INTEGER,
-gender VARCHAR(1),
-notes VARCHAR(255));
-```
+`npm run setup`
 
 ### node
 
