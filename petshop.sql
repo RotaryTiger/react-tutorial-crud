@@ -82,6 +82,9 @@ ALTER TABLE ONLY dogs ALTER COLUMN id SET DEFAULT nextval('dogs_id_seq'::regclas
 --
 
 COPY dogs (id, name, breed, age, gender, notes) FROM stdin;
+7	toby	schnauzer	3	M	good
+8	alyssa	corgi	7	F	v good, imo
+9	barktholomew	boxer	1	M	extremely good
 \.
 
 
@@ -89,7 +92,7 @@ COPY dogs (id, name, breed, age, gender, notes) FROM stdin;
 -- Name: dogs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: danielmacphee
 --
 
-SELECT pg_catalog.setval('dogs_id_seq', 6, true);
+SELECT pg_catalog.setval('dogs_id_seq', 9, true);
 
 
 --
