@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
+const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
+app.use(morgan('tiny'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.all('/*', (req, res, next) => {
